@@ -11,7 +11,7 @@
 <body>
 <div id="app">
     <div class="nav-bar"></div>
-
+    <div class="cart">Cart({{ cart }})</div>
     <div class="product-display">
         <div class="product-container">
             <div class="product-image">
@@ -34,7 +34,9 @@
                         {{item}}
                     </li>
                 </ul>
-                <div v-for="(item,index) in image_data.variants" :key="image_data.variants.id" >{{item.color  }}  <!--{{ index}} --></div>
+                <div v-for="(item,index) in image_data.variants" :key="image_data.variants.id" @mouseover="updateimage(item.image)" >{{item.color  }}  <!--{{ index}} --></div>
+                <button class="button" @click="updatecart" >Add to Cart</button>
+                <button class="button" @click="minuscart" >Reduce</button>
             </div>
         </div>
     </div>

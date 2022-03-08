@@ -24,6 +24,17 @@
                 <p v-else-if="image_data.inventory <=10 && image_data.inventory > 0"> Almost sold out</p>
                 <p v-else>Out of Stock</p>
                 <p v-if="image_data.onsale">On Sale</p>
+                <ul>
+                    <li v-for="item in image_data.details">
+                        {{item}}
+                    </li>
+                </ul>
+                <ul>
+                    <li v-for="(item ,index) in image_data.sizes  " :key="index">
+                        {{item}}
+                    </li>
+                </ul>
+                <div v-for="(item,index) in image_data.variants" :key="image_data.variants.id" >{{item.color  }}  <!--{{ index}} --></div>
             </div>
         </div>
     </div>

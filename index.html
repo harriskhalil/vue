@@ -15,7 +15,7 @@
     <div class="product-display">
         <div class="product-container">
             <div class="product-image">
-                <a :href="image_data.url"><img :src="image_data.image"  ></a>
+                <a :href="image_data.url"><img :class="{ outofstockimg : !image_data.instock}" :src="image_data.image"  ></a>
             </div>
             <div class="product-info">
                 <h1>{{ product }}</h1>
@@ -34,8 +34,22 @@
                         {{item}}
                     </li>
                 </ul>
-                <div v-for="(item,index) in image_data.variants" :key="image_data.variants.id" @mouseover="updateimage(item.image)" >{{item.color  }}  <!--{{ index}} --></div>
-                <button class="button" @click="updatecart" >Add to Cart</button>
+                <div
+                    class="color-circle"
+                    v-for="(item,index) in image_data.variants"
+                    :key="image_data.variants.id"
+                    @mouseover="updateimage(item.image)"
+                    :style="{backgroundColor:item.color}"
+                >
+                </div>
+                <button
+                        class="button"
+                        @click="updatecart"
+                        :disabled="!image_data.instock"
+                        :class="{disabledButton : !image_data.instock }"
+                >
+                    Add to Cart
+                </button>
                 <button class="button" @click="minuscart" >Reduce</button>
             </div>
         </div>

@@ -5,7 +5,7 @@ const app = Vue.createApp({
             image_data:{
                 image:'./assets/images/socks_blue.jpg',
                 url:'https://vuejs.org/',
-                instock: true,
+                instock: false,
                 inventory:100,
                 onsale:true,
                 details:['50% cotton','30% wool','20% wool'],
